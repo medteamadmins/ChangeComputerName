@@ -22,4 +22,3 @@ $newComputerName = "$PCSComputer-${serialNumber}-$computerType"
 
 # Set new computer name
 Rename-Computer -NewName $newComputerName -Force
-New-Item -Path "C:\ChangeComputerNameVer2Successful.txt"
