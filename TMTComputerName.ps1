@@ -21,13 +21,14 @@ if ((Get-WmiObject -Class Win32_SystemEnclosure).ChassisTypes -contains 10) {
 # Create new computer name
 $newComputerName = "${serialNumber}-$computerType"
 
-If($newComputerName = $currentComputerName){
+If($newComputerName -eq $currentComputerName){
     Write-Host "Computer name was already in the correct format!"
-    }
-Else{
-# Set new computer name
-Rename-Computer -NewName $newComputerName -Force
 }
+Else{
+    # Set new computer name
+    Rename-Computer -NewName $newComputerName -Force
+}
+
 
 
 # Calculate the time when the restart will occur
@@ -50,4 +51,4 @@ Rename-Computer -NewName $newComputerName -Force
 
 # Schedule the computer to restart
 # shutdown.exe /r -s -t 600
-New-Item -Path "C:\ChangeComputerNameVer2Successful.txt"
+#New-Item -Path "C:\ChangeComputerNameVer2Successful.txt"
